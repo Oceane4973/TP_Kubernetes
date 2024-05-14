@@ -1,0 +1,20 @@
+#  Créer le pod
+# $ kubectl apply -f pods.yaml
+
+# Voir les pods
+# $ kubectl get pods --all-namespaces -o wide
+
+#Vérifiez que le pods est bien créé, et déterminez son adresse IP (192.168.XXX.YYY).
+#Connectez-vous sur le master ou bien un nœud et envoyez une requête au pod
+# $ curl 192.168.XXX.YYY
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  namespace: development
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+

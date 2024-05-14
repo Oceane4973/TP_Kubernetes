@@ -1,0 +1,24 @@
+# Maintenant, modifiez le fichier pour que httpd soit lancé au lieu de nginx et faire
+# $ kubectl apply -f back-end-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-end-deployment
+  namespace: development
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: back-end
+  template:
+    metadata:
+      labels:
+        app: back-end
+    spec:
+      containers:
+        - name: back-end
+          image: 10.54.56.39:5000/back-end:0.0.1
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: private-registry-key

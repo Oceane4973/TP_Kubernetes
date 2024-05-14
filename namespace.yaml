@@ -1,0 +1,14 @@
+# Lancer le namaspace
+# $ kubectl apply -f namespace.yaml
+
+# Vérifier que «development» existe bien
+# $ kubectl get namespaces --show-labels
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+  labels:
+    environment: development
+    purpose: development
+

@@ -1,0 +1,16 @@
+# gradle build
+# docker build -t back-end:latest .
+# docker run -p 4567:8080 back-end:latest
+# curl http://0.0.0.0:4567/api/v1/ip
+
+FROM amazoncorretto:17
+
+RUN yum -y install unzip
+WORKDIR /
+
+COPY ./app/build/distributions/app.zip /
+RUN unzip app.zip
+
+EXPOSE 4567
+
+CMD ["app/bin/app"]

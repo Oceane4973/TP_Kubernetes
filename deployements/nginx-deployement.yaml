@@ -1,0 +1,31 @@
+# Maintenant, modifiez le fichier pour que httpd soit lancé au lieu de nginx et faire
+# $ kubectl apply -f deployment.yaml
+
+# Vérifiez que la sortie de curl indique qu’apache est maintenant lancé.
+# Regardez l’historique des déploiements
+# $ kubectl rollout history  -n development deployment.v1.apps/frontend
+
+# Pour revenir à la version précédente
+# $ kubectl rollout undo -n development deployment.v1.apps/frontend
+
+# Supprimer maintenant le déploiement
+# $  kubectl delete  -f  deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: development
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx

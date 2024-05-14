@@ -1,0 +1,18 @@
+# créer le pod
+# kubectl apply -f back-end-pod.yaml
+
+# Supprimer le pod
+# kubectl delete -f back-end-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: back-end-pod
+  namespace: development
+spec:
+  containers:
+    - name: back-end
+      image: 10.54.56.39:5000/back-end:0.0.1
+      imagePullPolicy: Always
+  imagePullSecrets:
+    - name: private-registry-key
