@@ -11,6 +11,6 @@ WORKDIR /
 COPY ./app/build/distributions/app.zip /
 RUN unzip app.zip
 
-EXPOSE 4567
+EXPOSE 8080
 
 CMD ["app/bin/app"]
