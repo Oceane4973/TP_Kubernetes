@@ -1,0 +1,15 @@
+# kubectl apply -f ....yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-nginx
+  namespace: development
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
